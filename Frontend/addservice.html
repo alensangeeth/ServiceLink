@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header_section {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .add-service-section {
+            padding: 100px 0; /* Adjusted for fixed header */
+        }
+        .add-service-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .footer_section {
+            background: #343a40;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><span>ServiceLink</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="dropdown ms-lg-3">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user me-1"></i> My Account
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Bookings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Add Service Section -->
+    <div class="container add-service-section">
+        <h1 class="text-center mb-4">Add New Service</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="add-service-card">
+                    <form id="addServiceForm">
+                        <div class="mb-3">
+                            <label for="serviceName" class="form-label">Service Name</label>
+                            <input type="text" class="form-control" id="serviceName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="serviceCategory" class="form-label">Service Category</label>
+                            <select class="form-select" id="serviceCategory" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="Home Maintenance Services">Home Maintenance Services</option>
+                                <option value="Beauty & Wellness">Beauty & Wellness</option>
+                                <option value="Automotive">Automotive</option>
+                                <option value="Sports & Fitness">Sports & Fitness</option>
+                                <option value="Event Management">Event Management</option>
+                                <option value="Education & Training">Education & Training</option>
+                                <option value="Tech Support & IT Services">Tech Support & IT Services</option>
+                                <option value="Parenting & Childcare Services">Parenting & Childcare Services</option>
+                                <option value="Senior Care & Assisted Living Services">Senior Care & Assisted Living Services</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="serviceDescription" class="form-label">Service Description</label>
+                            <textarea class="form-control" id="serviceDescription" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="servicePrice" class="form-label">Service Price (₹)</label>
+                            <input type="number" class="form-control" id="servicePrice" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="serviceDuration" class="form-label">Estimated Duration (in hours)</label>
+                            <input type="number" class="form-control" id="serviceDuration" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Add Service</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About ServiceLink</h4>
+                    <p>Professional home services with over 10 years of experience serving our community.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Services</a></li>
+                        <li><a href="#about" class="text-white">About</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contact Info</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@servicelink.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Hormis Nagar, Ernakulam, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 border-light">
+            <div class="text-center">
+                <p>&copy; 2025 ServiceLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" defer></script>
+    <script>
+        document.getElementById('addServiceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const serviceName = document.getElementById('serviceName').value;
+            const serviceDescription = document.getElementById('serviceDescription').value;
+            const servicePrice = document.getElementById('servicePrice').value;
+            const serviceDuration = document.getElementById('serviceDuration').value;
+
+            alert(`Service Added!\nName: ${serviceName}\nDescription: ${serviceDescription}\nPrice: ₹${servicePrice}\nDuration: ${serviceDuration} hours`);
+            
+            // Here you would typically send this data to your server
+            console.log('New service data:', {
+                name: serviceName,
+                description: serviceDescription,
+                price: servicePrice,
+                duration: serviceDuration
+            });
+        });
+    </script>
+
+</body>
+</html>

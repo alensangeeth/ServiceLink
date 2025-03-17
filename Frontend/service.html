@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Professional home repair and maintenance services including plumbing, electrical, and general maintenance">
+    <meta name="theme-color" content="#007bff">
+    
+    <title>ServiceLink - Our Services</title>
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+
+        .header_section {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .services_hero {
+            padding-top:70px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+            min-height: 10vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .services_section {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            padding: 2rem 0;
+        }
+
+        .service_card {
+            transition: var(--transition);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            max-width: 400px; /* Set a maximum width for the service card */
+        }
+
+        .service_card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0,123,255,0.2);
+        }
+
+        .service_card::after {
+            content: "Learn More →";
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            color: var(--primary-color);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service_card:hover::after {
+            opacity: 1;
+        }
+
+        .service_icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-color);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .service_card:hover .service_icon {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .service_card:hover .service_icon i {
+            color: white !important;
+        }
+
+        .service_details {
+            padding: 2rem;
+        }
+
+        .service_features {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+        }
+
+        .service_features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service_features li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .footer_section {
+            background: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .category_box {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            width: auto; /* Set width to auto to fit content */
+        }
+
+        .category_title {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .category-button {
+            margin-bottom: 10px; /* Space between category buttons */
+            width: 100%; /* Make all buttons the same width */
+        }
+
+        .service_card_display {
+            display: none; /* Initially hidden */
+        }
+
+        @media (max-width: 992px) {
+            .services_hero {
+                padding-top: 5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service_card {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><span>ServiceLink</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-primary ms-lg-3">Sign up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="services_hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="mb-3">Our Services</h1>
+                    <p class="lead">Comprehensive home maintenance solutions tailored to your needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="category_box">
+                        <div class="category_title">Service Categories</div>
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="homeMaintenanceBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home Maintenance Services
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="homeMaintenanceBtn">
+                            <li class="dropdown-item" data-service="Plumbing">Plumbing</li>
+                            <li class="dropdown-item" data-service="Electrical Repairs">Electrical Repairs</li>
+                            <li class="dropdown-item" data-service="Carpentry">Carpentry</li>
+                            <li class="dropdown-item" data-service="Painting">Painting</li>
+                            <li class="dropdown-item" data-service="Appliance Repair">Appliance Repair</li>
+                            <li class="dropdown-item" data-service="Home Renovation">Home Renovation</li>
+                        </ul>
+
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="beautyWellnessBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Beauty and Wellness Services
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="beautyWellnessBtn">
+                            <li class="dropdown-item" data-service="Haircuts">Haircuts</li>
+                            <li class="dropdown-item" data-service="Skincare Treatments">Skincare Treatments</li>
+                            <li class="dropdown-item" data-service="Spa & Wellness Services">Spa & Wellness Services</li>
+                            <li class="dropdown-item" data-service="Makeup & Bridal Services">Makeup & Bridal Services</li>
+                        </ul>
+                        
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="automotiveBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Automotive
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="automotiveBtn">
+                            <li class="dropdown-item" data-service="Car Washing">Car Washing</li>
+                            <li class="dropdown-item" data-service="Bike Washing">Bike Washing</li>
+                            <li class="dropdown-item" data-service="Repairs">Vechile Repairs</li>
+                            <li class="dropdown-item" data-service="Bike & Car Rental">Bike & Car Rental</li>
+                        </ul>
+
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="fitnessCoachingBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                             Sports & Fitness Coaching
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="fitnessCoachingBtn">
+                            <li class="dropdown-item" data-service="Personal Training">Personal Training</li>
+                            <li class="dropdown-item" data-service="Yoga Classes">Yoga Classes</li>
+                            <li class="dropdown-item" data-service="Sports Coaching">Sports Coaching</li>
+                        </ul>
+                        
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="automotiveBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Education & Training
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="automotiveBtn">
+                            <li class="dropdown-item" data-service="Private Tutoring">Private Tutoring</li>
+                            <li class="dropdown-item" data-service="Language Learning">Language Learning</li>
+                            
+                        </ul>
+
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="automotiveBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tech & IT Support
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="automotiveBtn">
+                            <li class="dropdown-item" data-service="Computer & Laptop Repair">Computer & Laptop Repair</li>
+                            <li class="dropdown-item" data-service="Data Recovery Services">Data Recovery Services</li>
+                            <li class="dropdown-item" data-service="Network Setup & Troubleshooting">Network Setup & Troubleshooting</li>
+                            <li class="dropdown-item" data-service="Cybersecurity Services">Cybersecurity Services</li>
+                        </ul>
+
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="eventManagementBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Event Management Services
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="eventManagementBtn">
+                            <li class="dropdown-item" data-service="Event Planning & Management">Event Planning & Management</li>
+                            <li class="dropdown-item" data-service="Decoration">Decoration</li>
+                            <li class="dropdown-item" data-service="Photography & Videography">Photography & Videography</li>
+                            <li class="dropdown-item" data-service="Venue Booking">Venue Booking</li>
+                        </ul>
+
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="automotiveBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Parenting & Childcare
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="automotiveBtn">
+                            <li class="dropdown-item" data-service="Babysitting & Nanny Services">Babysitting & Nanny Services</li>
+                            <li class="dropdown-item" data-service="Special Needs Child Assistance">Special Needs Child Assistance</li>
+                            <li class="dropdown-item" data-service="Parenting Coaching & Support">Parenting Coaching & Support</li>
+                        </ul>
+
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="automotiveBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Senior Care
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="automotiveBtn">
+                            <li class="dropdown-item" data-service="Home Nursing & Elderly Care">Home Nursing & Elderly Care</li>
+                            <li class="dropdown-item" data-service="Physiotherapy for Seniors">Physiotherapy for Seniors</li>
+                            <li class="dropdown-item" data-service="Social Engagement Activities for Elderly">Social Engagement Activities for Elderly</li>
+                        </ul>
+                    
+                        <button class="btn btn-primary category-button dropdown-toggle" type="button" id="othersBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Others
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="othersBtn">
+                            <li class="dropdown-item" data-service="Custom Service 1">Custom Service 1</li>
+                            <li class="dropdown-item" data-service="Custom Service 2">Custom Service 2</li>
+                            <li class="dropdown-item" data-service="Custom Service 3">Custom Service 3</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="service_card_display">
+                        <div class="service_card">
+                            <div class="service_details">
+                                <div class="service_icon">
+                                    <i class="fas fa-tools fa-2x text-primary"></i>
+                                </div>
+                                <h3 class="text-center mb-4" id="selectedServiceTitle">Service Title</h3>
+                                <ul class="service_features" id="selectedServiceFeatures">
+                                    <!-- Service features will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About ServiceLink</h4>
+                    <p>Professional home services with over 10 years of experience serving our community.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#services" class="text-white">Services</a></li>
+                        <li><a href="#about" class="text-white">About</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contact Info</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@servicelink.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Hormis Nagar, Ernakulam, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 border-light">
+            <div class="text-center">
+                <p>&copy; 2025 ServiceLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            const serviceCardDisplay = document.querySelector('.service_card_display');
+            const selectedServiceTitle = document.getElementById('selectedServiceTitle');
+            const selectedServiceFeatures = document.getElementById('selectedServiceFeatures');
+
+            const serviceDetails = {
+                "Plumbing": ["Pipe repair and replacement", "Fixture installation", "Drain cleaning", "Water heater services", "Leak detection and repair"],
+                "Electrical Repairs": ["Electrical installations", "Circuit repairs", "Lighting installation", "Safety inspections", "Emergency electrical repairs"],
+                "Carpentry": ["Custom furniture building", "Woodwork repairs", "Cabinet making", "Deck construction", "Trim installation"],
+                "Painting": ["Interior painting", "Exterior painting", "Wall preparation", "Staining", "Touch-ups"],
+                "Appliance Repair": ["Refrigerator repair", "Washing machine repair", "Oven repair", "Dishwasher repair", "Microwave repair"],
+                "Haircuts": ["Men's haircut", "Women's haircut", "Children's haircut", "Styling", "Coloring"],
+                "Skincare Treatments": ["Facials", "Peels", "Microdermabrasion", "Waxing", "Massage"],
+                "Personal Training": ["One-on-one training", "Group sessions", "Nutrition guidance", "Fitness assessments", "Goal setting"],
+                "Yoga Classes": ["Hatha Yoga", "Vinyasa Yoga", "Restorative Yoga", "Power Yoga", "Meditation"],
+                "Sports Coaching": ["Tennis coaching", "Football coaching", "Basketball coaching", "Swimming coaching", "Athletic training"],
+                "Car Washing": ["Exterior wash", "Interior cleaning", "Waxing", "Detailing", "Engine cleaning"],
+                "Repairs": ["Engine repair", "Transmission repair", "Brake repair", "Tire replacement", "Battery replacement"],
+                "Maintenance": ["Oil change", "Fluid checks", "Tire rotation", "Brake inspection", "Battery check"],
+                "Catering": ["Event catering", "Corporate catering", "Wedding catering", "Buffet service", "Drop-off catering"],
+                "Decoration": ["Event decoration", "Floral arrangements", "Thematic setups", "Lighting design", "Table settings"],
+                "Photography": ["Event photography", "Portrait photography", "Product photography", "Family sessions", "Wedding photography"],
+                "Venue Booking": ["Indoor venues", "Outdoor venues", "Conference rooms", "Banquet halls", "Wedding venues"],
+                "Custom Service 1": ["Detail 1 for Custom Service 1", "Detail 2 for Custom Service 1"],
+                "Custom Service 2": ["Detail 1 for Custom Service 2", "Detail 2 for Custom Service 2"],
+                "Custom Service 3": ["Detail 1 for Custom Service 3", "Detail 2 for Custom Service 3"]
+            };
+
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const serviceName = this.getAttribute('data-service');
+                    selectedServiceTitle.textContent = serviceName;
+                    selectedServiceFeatures.innerHTML = ''; // Clear previous features
+
+                    // Populate features based on selected service
+                    const features = serviceDetails[serviceName];
+                    features.forEach(feature => {
+                        const li = document.createElement('li');
+                        li.textContent = feature;
+                        selectedServiceFeatures.appendChild(li);
+                    });
+
+                    serviceCardDisplay.style.display = 'block'; // Show the service card
+                });
+            });
+        });
+    </script>
+</body>
+</html>

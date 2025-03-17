@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header_section {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .profile_hero {
+            padding-top: 50px; /* Adjusted for fixed header */
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            min-height: 30vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .form-label{
+          color: black;
+        }
+        .profile_section {
+            color: #007bff;
+            padding: 4rem 0;
+            min-height: 60vh;
+        }
+        .profile_section h5 {
+              color: var(--primary-color);
+              margin-bottom: 1.5rem;
+              font-weight: 600;
+              border-bottom: 2px solid var(--light-color);
+              padding-bottom: 0.5rem;
+        }
+        .profile_card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .profile_header {
+            background: #007bff;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .profile_avatar {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border: 4px solid rgba(255,255,255,0.3);
+            overflow: hidden;
+        }
+        .profile_avatar i {
+            font-size: 60px;
+            color: #6c757d;
+        }
+        .profile_body {
+            padding: 2rem;
+        }
+        .footer_section {
+            background: #343a40;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><span>ServiceLink</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="dropdown ms-lg-3">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user me-1"></i> My Account
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Bookings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Profile Hero -->
+    <section class="profile_hero">
+        <div class="container text-center">
+            <h1 class="mb-2">Manage your Profile</h1>  
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="profile_section">
+        <div class="container">
+            <div class="row">
+                <!-- Personal Information Card -->
+                <div class="col-lg-6">
+                    <div class="profile_card">
+                        <div class="profile_header text-center">
+                            <div class="profile_avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3 id="providerNameDisplay">Jane Smith</h3>
+                            <p class="mb-0" id="providerEmailDisplay">jane.smith@example.com</p>
+                        </div>
+                        <div class="profile_body">
+                            <h5>Personal Information</h5>
+                            <form id="providerProfileForm">
+                                <div class="mb-3">
+                                    <label for="providerName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="providerName" value="Jane Smith">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="providerEmail" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="providerEmail" value="jane.smith@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="providerPhone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="providerPhone" value="+91 98765 43210">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="providerAddress" class="form-label">Address</label>
+                                    <textarea class="form-control" id="providerAddress" rows="3">456 Elm Street, Ernakulam, Kerala 682020</textarea>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-primary" id="saveProviderProfile">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Offered Card -->
+                <div class="col-lg-6">
+                    <div class="profile_card">
+                        <div class="profile_header">
+                            <h3 class="m-0">Services Offered</h3>
+                        </div>
+                        <div class="profile_body">
+                            <ul class="list-group">
+                                <li class="list-group-item">Electrical - Lighting Installation</li>
+                                <li class="list-group-item">Plumbing - Pipe Repair</li>
+                                <li class="list-group-item">General Repair - Furniture Assembly</li>
+                                <li class="list-group-item">Cleaning - Home Deep Clean</li>
+                            </ul>
+                            <div class="d-grid gap-2 mt-3">
+                                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='addservice.html';">Add New Service</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About ServiceLink</h4>
+                    <p>Professional home services with over 10 years of experience serving our community.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Services</a></li>
+                        <li><a href="#about" class="text-white">About</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contact Info</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@servicelink.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Hormis Nagar, Ernakulam, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 border-light">
+            <div class="text-center">
+                <p>&copy; 2025 ServiceLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" defer></script>
+    <script>
+        document.getElementById('saveProviderProfile').addEventListener('click', function() {
+            const nameDisplay = document.getElementById('providerNameDisplay');
+            const emailDisplay = document.getElementById('providerEmailDisplay');
+            const nameInput = document.getElementById('providerName');
+            const emailInput = document.getElementById('providerEmail');
+
+            // Update display name and email
+            nameDisplay.textContent = nameInput.value;
+            emailDisplay.textContent = emailInput.value;
+
+            // You would typically send this data to your server here
+            console.log('Profile data saved:', {
+                name: nameInput.value,
+                email: emailInput.value,
+                phone: document.getElementById('providerPhone').value,
+                address: document.getElementById('providerAddress').value
+            });
+        });
+    </script>
+
+</body>
+</html>

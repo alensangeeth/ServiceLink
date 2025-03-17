@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Professional home repair and maintenance services including plumbing, electrical, and general maintenance">
+    <meta name="theme-color" content="#007bff">
+    
+    <title>ServiceLink - Professional Home Services</title>
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    
+    <style>
+
+        /* New styles for Our Services heading */
+        .services_section h1 {
+            color:#007bff; /* Change this to your desired color */
+            padding-bottom: 15px; /* Add bottom padding */
+        }
+
+        /* Core styles moved inline for better performance */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+
+        /* Header Styles */
+        .header_section {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+                /* Services Hero with updated background */
+                .services_hero {
+            padding-top: 6rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        /* Services section with matching background */
+        .services_section {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            padding: 4rem 0;
+        }
+
+        /* Enhanced service card styles for clickable functionality */
+        .service_card {
+            transition: var(--transition);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 300px;
+        }
+
+        .service_card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0,123,255,0.2);
+        }
+
+        .service_card::after {
+            /*content: "Learn More →";*/
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            color: var(--primary-color);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service_card:hover::after {
+            opacity: 1;
+        }
+
+        .service_icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-color);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .service_card:hover .service_icon {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .service_card:hover .service_icon i {
+            color: white !important;
+        }
+
+        .service_details {
+            padding: 2rem;
+        }
+
+        .service_features {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+        }
+
+        .service_features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service_features li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* Testimonials */
+        .testimonial_card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1rem;
+        }
+
+        .client_image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact_form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form_input {
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer_section {
+            background: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero_section {
+                padding-top: 5rem;
+            }
+            
+            .hero_content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service_card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .testimonial_card {
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="home" class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><span>ServiceLink</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="service.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-primary ms-lg-3">Sign in</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero_section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero_content">
+                    <h1>Professional Home Services</h1>
+                    <p class="lead mb-4">Expert repair, maintenance, and improvement services for your home. Quality work guaranteed.</p>
+                    <a href="service.html" class="btn btn-primary btn-lg">Schedule Service</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/home.png" alt="Professional home services illustration" class="img-fluid" style="
+                    padding-top: 70px; padding-left: 40px;
+                ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1>Our Services</h1>
+                </div>
+                <div class="col-md-4">
+                    <a href="service.html" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-home fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Home Maintenance Services</h3>
+                            <ul class="service_features">
+                                <p>Professional repair services for all your home maintenance needs.</p>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/electrical-services" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-spa fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Beauty & Wellness</h3>
+                            <ul class="service_features">
+                                <p>Enhance your beauty with expert grooming, skincare, and wellness services.</p>   
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/plumbing-services" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-car fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Automotive</h3>
+                            <ul class="service_features">
+                                <p>Expert automotive services for repairs, maintenance, and vehicle care.</p>   
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/plumbing-services" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-heartbeat fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Sports & Fitness</h3>
+                            <ul class="service_features">
+                                <p>Enhance your health and performance with expert sports and fitness services.</p>   
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/plumbing-services" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-calendar fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Event Management</h3>
+                            <ul class="service_features">
+                                <p>Seamless planning and coordination for unforgettable events.</p>   
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/plumbing-services" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-book fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Education & Training</h3>
+                            <ul class="service_features">
+                                <p>Empowering minds with expert education and skill-enhancing training programs.</p> 
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/plumbing-services" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-computer fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Tech Support & IT Services</h3>
+                            <ul class="service_features">
+                                <p>Expert solutions for all your tech support, repair, and IT service needs.</p>   
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/plumbing-services" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-heart fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Parenting & Childcare Services</h3>
+                            <ul class="service_features">
+                                <p>Caring for your child's growth and well-being.</p>  
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/plumbing-services" class="service_card">
+                        <div class="service_details">
+                            <div class="service_icon">
+                                <i class="fas fa-user-md fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-center mb-4">Senior Care & Assisted Living Services</h3>
+                            <ul class="service_features">
+                                <p>Compassionate care & support for seniors to enhance their quality of life.</p>    
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Client Testimonials</h2>
+            <div class="owl-carousel testimonial_slider">
+                <div class="testimonial_card">
+                    <img src="/api/placeholder/80/80" alt="Client" class="client_image">
+                    <h5>John Smith</h5>
+                    <p>"Excellent service! The team was professional and completed the work quickly."</p>
+                    <div class="rating text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial_card">
+                    <img src="/api/placeholder/80/80" alt="Client" class="client_image">
+                    <h5>Sarah Johnson</h5>
+                    <p>"Very reliable and professional service. Would highly recommend!"</p>
+                    <div class="rating text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Contact Us</h2>
+                    <form class="contact_form" id="contactForm">
+                        <div class="form_input">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form_input">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form_input">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="form_input">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <div class="map-container mt-4 mt-lg-0" style="height: 400px;">
+                        <img src="/api/placeholder/600/400" alt="Location map" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About ServiceLink</h4>
+                    <p>Professional home services with over 10 years of experience serving our community.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white">Home</a></li>
+                        <li><a href="service.html" class="text-white">Services</a></li>
+                        <li><a href="#about" class="text-white">About</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contact Info</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@servicelink.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Hormis Nagar, Ernakulam, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 border-light">
+            <div class="text-center">
+                <p>&copy; 2025 ServiceLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
+    
+    <script src="animation.js" defer></script>
+
+    <script>
+        
+
+            // Form validation
+            const form = document.getElementById('contactForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                alert('Thank you for your message. We will contact you soon!');
+                form.reset();
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        
+
+    </script>
+</body>
+</html>

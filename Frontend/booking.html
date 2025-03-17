@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header_section {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .booking-section {
+            padding: 100px 0; /* Added padding to avoid overlap with fixed header */
+        }
+        .booking-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .service-option {
+            margin-bottom: 20px;
+        }
+        .btn-book {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-book:hover {
+            background-color: #0056b3;
+        }
+        .footer_section {
+            background: #343a40;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><span>ServiceLink</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="dropdown ms-lg-3">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user me-1"></i> My Account
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Bookings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container booking-section">
+        <h1 class="text-center mb-4">Book a Service</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="booking-card">
+                    <h3>Select a Service</h3>
+                    <form id="bookingForm">
+                        <div class="service-option">
+                            <label for="serviceCategory" class="form-label">Service Category</label>
+                            <select class="form-select" id="serviceCategory" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="Home Maintenance Services">Home Maintenance Services</option>
+                                <option value="Beauty & Wellness">Beauty & Wellness</option>
+                                <option value="Automotive">Automotive</option>
+                                <option value="Sports & Fitness">Sports & Fitness</option>
+                                <option value="Event Management">Event Management</option>
+                                <option value="Education & Training">Education & Training</option>
+                                <option value="Tech Support & IT Services">Tech Support & IT Services</option>
+                                <option value="Parenting & Childcare Services">Parenting & Childcare Services</option>
+                                <option value="Senior Care & Assisted Living Services">Senior Care & Assisted Living Services</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="service-option">
+                            <label for="serviceSelect" class="form-label">Choose a Service</label>
+                            <select class="form-select" id="serviceSelect" required>
+                                <option value="" disabled selected>Select a service</option>
+                                <option value="Electrical - Lighting Installation">Electrical - Lighting Installation</option>
+                                <option value="Plumbing - Pipe Repair">Plumbing - Pipe Repair</option>
+                                <option value="General Repair - Furniture Assembly">General Repair - Furniture Assembly</option>
+                                <option value="Cleaning - Home Deep Clean">Cleaning - Home Deep Clean</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bookingDate" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="bookingDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bookingTime" class="form-label">Time Slot</label>
+                            <select class="form-select" id="bookingTime" required>
+                                <option value="" disabled selected>Select a time slot</option>
+                                <option value="morning">Morning (9:00 AM - 12:00 PM)</option>
+                                <option value="afternoon">Afternoon (1:00 PM - 4:00 PM)</option>
+                                <option value="evening">Evening (5:00 PM - 8:00 PM)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="additionalNotes" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="additionalNotes" rows="3" placeholder="Any specific requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-book">Book Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About ServiceLink</h4>
+                    <p>Professional home services with over 10 years of experience serving our community.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Services</a></li>
+                        <li><a href="#about" class="text-white">About</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contact Info</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@servicelink.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Hormis Nagar, Ernakulam, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 border-light">
+            <div class="text-center">
+                <p>&copy; 2025 ServiceLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" defer></script>
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const serviceCategory = document.getElementById('serviceCategory').value;
+            const service = document.getElementById('serviceSelect').value;
+            const date = document.getElementById('bookingDate').value;
+            const time = document.getElementById('bookingTime').value;
+            const notes = document.getElementById('additionalNotes').value;
+
+            alert(`Booking Confirmed!\nCategory: ${serviceCategory}\nService: ${service}\nDate: ${date}\nTime: ${time}\nNotes: ${notes}`);
+        });
+    </script>
+
+</body>
+</html>

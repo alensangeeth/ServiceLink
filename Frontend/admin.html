@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Admin Dashboard for managing users and service providers">
+    <meta name="theme-color" content="#007bff">
+    
+    <title>ServiceLink - Admin Dashboard</title>
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes full height */
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background: var(--dark-color);
+            color: white;
+            padding-top: 20px;
+            transition: width 0.3s;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: var(--primary-color);
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            padding-top: 80px; /* Adjusted for fixed header */
+            flex: 1; /* Allow content to grow and fill space */
+        }
+
+        .header_section {
+            position: fixed;
+            top: 0;
+            left: 250px;
+            width: calc(100% - 250px);
+            z-index: 999;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .footer_section {
+            background: var(--dark-color);
+            color: white;
+            padding: 2rem 0; /* Adjusted padding */
+            width: 100%; /* Full width */
+            text-align: center; /* Center text */
+            position: relative; /* Ensure it stays at the bottom */
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .card {
+            margin-bottom: 2rem;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background: var(--primary-color);
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .analytics {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .analytics-card {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .analytics-card:last-child {
+            margin-right: 0;
+        }
+
+        .btn {
+            border-radius: 20px;
+        }
+
+        /* Chart styles */
+        #userProviderChart {
+            height: 400px; /* Set height for the chart */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2 class="text-center">Admin Menu</h2>
+        <a href="#" class="active">Dashboard</a>
+        <a href="#users">Manage Users</a>
+        <a href="#providers">Manage Providers</a>
+        <a href="#reviews">Manage Reviews</a>
+        <a href="#userProviderGrowth">Analytics</a> <!-- Updated link to point to the chart section -->
+        <a href="#settings">Settings</a>
+        <a href="#logout" class="text-danger">Logout</a>
+    </div>
+
+    <!-- Header -->
+    <header class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><span>ServiceLink Admin</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1 class="text-center mb-4">Admin Dashboard</h1>
+
+        <!-- Analytics Section -->
+        <div class="analytics">
+            <div class="analytics-card card">
+                <div class="card-header">
+                    <h5>Total Users</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="text-center" id="totalUsers">0</h2>
+                </div>
+            </div>
+            <div class="analytics-card card">
+                <div class="card-header">
+                    <h5>Total Providers</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="text-center" id="totalProviders">0</h2>
+                </div>
+            </div>
+            <div class="analytics-card card">
+                <div class="card-header">
+                    <h5>Total Reviews</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="text-center" id="totalReviews">0</h2> <!-- Added ID for total reviews -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="card" id="userProviderGrowth"> <!-- Added ID for the chart section -->
+            <div class="card-header">
+                <h5>User and Provider Growth</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="userProviderChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Manage Users -->
+        <div id="users" class="card">
+            <div class="card-header">
+                <h5>Manage Users</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- User rows will be populated here -->
+                            <tr>
+                                <td>U001</td>
+                                <td>John Doe</td>
+                                <td>john.doe@example.com</td>
+                                <td>Active</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm">Deactivate</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Service Providers -->
+        <div id="providers" class="card">
+            <div class="card-header">
+                <h5>Manage Service Providers</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Provider ID</th>
+                                <th>Name</th>
+                                <th>Service Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Provider rows will be populated here -->
+                            <tr>
+                                <td>P001</td>
+                                <td>Jane Smith</td>
+                                <td>Plumbing</td>
+                                <td>Pending Approval</td>
+                                <td>
+                                    <button class="btn btn-success btn-sm">Approve</button>
+                                    <button class="btn btn-danger btn-sm">Reject</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Reviews -->
+        <div id="reviews" class="card">
+            <div class="card-header">
+                <h5>Manage Reviews</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Review ID</th>
+                                <th>User</th>
+                                <th>Service</th>
+                                <th>Rating</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Review rows will be populated here -->
+                            <tr>
+                                <td>R001</td>
+                                <td>John Doe</td>
+                                <td>Electrical Repair</td>
+                                <td>5</td>
+                                <td>Pending Approval</td>
+                                <td>
+                                    <button class="btn btn-success btn-sm">Approve</button>
+                                    <button class="btn btn-danger btn-sm">Reject</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" defer></script>
+    <script>
+        // Function to fetch user, provider, and review counts from Django backend
+        async function fetchCounts() {
+            try {
+                const response = await fetch('/api/counts/'); // Adjust the URL to your Django API endpoint
+                const data = await response.json();
+                document.getElementById('totalUsers').textContent = data.total_users;
+                document.getElementById('totalProviders').textContent = data.total_providers;
+                document.getElementById('totalReviews').textContent = data.total_reviews; // Update total reviews
+
+                // Update the chart with the new data
+                updateChart(data.total_users, data.total_providers);
+            } catch (error) {
+                console.error('Error fetching counts:', error);
+            }
+        }
+
+        // Function to update the chart
+        function updateChart(totalUsers, totalProviders) {
+            const ctx = document.getElementById('userProviderChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Users', 'Providers'],
+                    datasets: [{
+                        label: 'Count',
+                        data: [totalUsers, totalProviders],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 99, 132, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Call the fetchCounts function to load the initial data
+        fetchCounts();
+    </script>
+</body>
+</html>
