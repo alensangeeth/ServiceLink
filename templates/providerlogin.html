@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceLink | Provider Login</title>
+    
+    <!-- CSS Links -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif; /* Default font for body */
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            height: auto; /* Changed to auto to accommodate footer padding */
+            padding-bottom: 50px; /* Added bottom padding for footer */
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background: white; /* Keep header color unchanged */
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 10px 0; /* Adjust padding for header height */
+        }
+        
+        .navbar {
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; /* Use the same font as home.html */
+        }
+
+        .navbar-brand span {
+            color: #007bff; /* Changed to blue */
+            font-weight: bold; /* Make it bold */
+        }
+        
+        .login-btn {
+            text-decoration: none;
+            color: #404145;
+            font-weight: 600;
+            padding: 8px 16px;
+        }
+        
+        .continue-btn {
+            background-color: #007bff; /* Changed to blue */
+            color: white;
+            padding: 10px; /* Decreased padding */
+            border: none;
+            border-radius: 4px;
+            font-size: 14px; /* Decreased font size */
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px; /* Adjusted margin */
+        }
+        
+        .hero {
+            position: relative;
+            height: calc(100vh - 70px);
+            background-image: url('/api/placeholder/1500/800');
+            background-size: cover;
+            background-position: center;
+            padding-top: 70px; /* Adjust for fixed header */
+        }
+        
+        .login-container {
+            position: relative; /* Changed to relative */
+            top: 50px; /* Adjusted to position below the header */
+            left: 50%;
+            transform: translate(-50%, 0); /* Center horizontally */
+            display: flex;
+            width: 650px; /* Increased width to make it slightly bigger */
+            height: auto; /* Adjusted height for login */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .left-side {
+            width: 45%;
+            background-color: #007bff; /* Changed to blue */
+            color: white;
+            padding: 30px; /* Adjusted padding */
+            padding-top: 50px; /* Added top padding for text inside left box */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align items to the start */
+            position: relative; /* For absolute positioning of the image */
+            overflow: hidden; /* Ensure content does not overflow */
+        }
+        
+        .left-side h1 {
+            position: relative; /* Position relative to the left-side */
+            z-index: 2; /* Ensure text is above the background image */
+        }
+
+        .right-side {
+            width: 55%;
+            background-color: white;
+            padding: 30px; /* Adjusted padding */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1 {
+            font-size: 2rem; /* Adjusted font size */
+            margin-bottom: 20px; /* Adjusted margin */
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px; /* Adjusted margin */
+            color: #404145;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Adjusted gap */
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px; /* Adjusted gap */
+        }
+        
+        label {
+            font-size: 14px;
+            color: #404145;
+            font-weight: 600;
+        }
+        
+        input {
+            padding: 8px; /* Decreased padding */
+            border: 1px solid #c5c6c9;
+            border-radius: 4px;
+            font-size: 14px; /* Decreased font size */
+        }
+        
+        .password-field {
+            position: relative;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #62646a;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            font-size: 12px; /* Decreased font size */
+            color: #1dbf73;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><span>ServiceLink</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'service' %}">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'providersignup' %}">Become a Provider</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">User  Login</a>
+                        </li>
+                    </ul>
+                    <a href="{% url 'providersignup' %}" class="btn btn-primary ms-lg-3">SignUp</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="login-container">
+            <div class="left-side">
+                <h1>Welcome Back!</h1>
+                <p>Please login to your provider account to continue.</p>
+            </div>
+            
+            <div class="right-side">
+                <h2>Continue with your email or username</h2>
+                
+                <form method="POST" action="{% url 'providerlogin' %}">
+                    {% csrf_token %}
+                
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-field">
+                            <input type="password" id="password" name="password" class="form-control" required>
+                            <span class="password-toggle">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="#62646A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke="#62646A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <button type="submit" class="continue-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordField = document.getElementById('password');
+        const passwordToggle = document.querySelector('.password-toggle');
+
+        passwordToggle.addEventListener('click', function() {
+            // Toggle the type attribute
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            // Optionally, change the icon or add a class to indicate visibility
+        });
+    });
+</script>
+</body>
+</html>
